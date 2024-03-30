@@ -7,6 +7,8 @@ import datetime
 import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import json
 from streamlit_lottie import st_lottie
 
@@ -187,7 +189,7 @@ def user_data(username):
     chrome_options.add_argument('--headless') # this is must
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()),options=chrome_options)
     readme = []
     for html_url in repo_html_url:
       driver.get(html_url)
