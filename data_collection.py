@@ -138,6 +138,10 @@ def user_data(username):
         quarter = []
         years = []
         count = 0
+        if name is None:
+            name = login
+        if login is None:
+            login = name
         for ind in range(len(commit)):
             if commit[ind]["author"]["name"] in name or commit[ind]["author"]["name"] in login:
               count += 1
